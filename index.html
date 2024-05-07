@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Saver Tool</title>
+</head>
+<body>
+    <h1>Budget Saver Tool</h1>
+
+    <form id="budgetForm">
+        <h2>Income</h2>
+        <label for="income">Total Income:</label>
+        <input type="number" id="income" name="income" required><br><br>
+
+        <h2>Expenses</h2>
+        <label for="housing">Housing:</label>
+        <input type="number" id="housing" name="housing"><br><br>
+
+        <!-- Add more expense categories as needed -->
+
+        <h2>Savings Goals</h2>
+        <label for="emergency">Emergency Fund:</label>
+        <input type="number" id="emergency" name="emergency"><br><br>
+
+        <!-- Add more savings goals as needed -->
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="results">
+        <!-- Results will be displayed here -->
+    </div>
+
+    <script>
+        document.getElementById('budgetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Retrieve form values
+            const income = parseFloat(document.getElementById('income').value);
+            const housing = parseFloat(document.getElementById('housing').value);
+            // Add more expense variables as needed
+            const totalExpenses = housing; // Add up all expenses
+            const emergency = parseFloat(document.getElementById('emergency').value);
+            // Add more savings goals variables as needed
+
+            // Calculate savings
+            const totalSavings = income - totalExpenses - emergency;
+
+            // Display results
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <h2>Results</h2>
+                <p>Total Income: £${income}</p>
+                <p>Total Expenses: £${totalExpenses}</p>
+                <p>Total Savings: £${totalSavings}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
